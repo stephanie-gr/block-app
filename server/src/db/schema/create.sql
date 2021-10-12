@@ -1,0 +1,62 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS stories CASCADE;
+DROP TABLE IF EXISTS restriction_instances CASCADE;
+DROP TABLE IF EXISTS genre_restrictions CASCADE;
+DROP TABLE IF EXISTS age_restrictions CASCADE;
+DROP TABLE IF EXISTS gender_restrictions CASCADE;
+DROP TABLE IF EXISTS misc_restrictions CASCADE;
+DROP TABLE IF EXISTS voice_restrictions CASCADE;
+DROP TABLE IF EXISTS length_restrictions CASCADE;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255),
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE restriction_instances (
+  id SERIAL PRIMARY KEY NOT NULL,
+);
+
+CREATE TABLE stories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text TEXT,
+  title VARCHAR(255),
+  link VARCHAR(255),
+  date VARCHAR(255) NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  restriction_id INTEGER REFERENCES restriction_instances(id) ON DELETE CASCASE
+);
+
+  
+CREATE TABLE genre_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE age_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE gender_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE misc_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE voice_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE length_restrictions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  text VARCHAR(255) NOT NULL
+);
