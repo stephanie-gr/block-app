@@ -19,7 +19,7 @@ function App() {
       return block.setAttribute("class", "block_roll")
     }
     
-    getRandomRestriction();
+    getRandomRestriction("blockOne");
 
     return block.setAttribute("class", "block");
 
@@ -30,7 +30,9 @@ function App() {
 
     if (block.getAttribute("class") !== "block_roll") {
       return block.setAttribute("class", "block_roll")
-    }
+    };
+
+    getRandomRestriction("blockTwo");
 
     return block.setAttribute("class", "block");
   }
@@ -40,7 +42,9 @@ function App() {
 
     if (block.getAttribute("class") !== "block_roll") {
       return block.setAttribute("class", "block_roll")
-    }
+    };
+
+    getRandomRestriction("blockThree");
 
     return block.setAttribute("class", "block");
   }
