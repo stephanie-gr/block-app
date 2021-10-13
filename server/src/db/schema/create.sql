@@ -17,7 +17,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE restriction_instances (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL
 );
 
 CREATE TABLE stories (
@@ -33,36 +33,30 @@ CREATE TABLE stories (
   
 CREATE TABLE genre_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE age_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE gender_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE misc_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE voice_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE length_restrictions (
   id SERIAL PRIMARY KEY NOT NULL,
-  text VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL
+  text VARCHAR(255) NOT NULL
 );

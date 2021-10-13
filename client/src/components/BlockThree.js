@@ -7,7 +7,7 @@ export default function Block(props) {
 
       <div className="container">
         <div className="block" id="block-three" onClick={props.onClick}>
-          <div className="face front"></div>
+          <div className="face front">{props.blockThree}</div>
           <div className="face back"></div>
           <div className="face right"></div>
           <div className="face left"></div>

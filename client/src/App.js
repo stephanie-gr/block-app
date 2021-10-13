@@ -1,6 +1,5 @@
 import './App.scss';
 import { useEffect, useState, useContext} from 'react';
-// import { blockContext } from './context/BlockContext';
 import { restrictionContext } from './context/RestrictionContext';
 import RestrictionStateProvider from './context/RestrictionContext';
 import axios from 'axios';
@@ -21,6 +20,21 @@ function App() {
     
     getRandomRestriction("blockOne");
 
+    // axios
+    //   .get(`/api/${state.blockOne}_restrictions`)
+    //   .then((res) => {
+    //     console.log(res);
+    //   }
+    // );
+
+    axios
+      .get(`/api/users`)
+      .then((res) => {
+        console.log('bro wtf');
+        console.log(res);
+      }
+    );
+
     return block.setAttribute("class", "block");
 
   }
@@ -34,6 +48,11 @@ function App() {
 
     getRandomRestriction("blockTwo");
 
+    axios.get(`/api/${state.blockOne}_restrictions`)
+      .then((res) => {
+        
+      });
+
     return block.setAttribute("class", "block");
   }
 
@@ -45,6 +64,11 @@ function App() {
     };
 
     getRandomRestriction("blockThree");
+
+    axios.get(`/api/${state.blockOne}_restrictions`)
+      .then((res) => {
+        
+      });
 
     return block.setAttribute("class", "block");
   }
@@ -62,9 +86,9 @@ function App() {
 
       <main className="App-main">
         <div className="dice">
-          <BlockOne onClick={rollOne}/>
-          <BlockTwo onClick={rollTwo}/>
-          <BlockThree onClick={rollThree}/>
+          <BlockOne onClick={rollOne} blockOne={state.blockOne}/>
+          <BlockTwo onClick={rollTwo} blockTwo={state.blockTwo}/>
+          <BlockThree onClick={rollThree} blockThree={state.blockThree}/>
         </div>
       </main>
 
