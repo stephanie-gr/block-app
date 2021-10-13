@@ -1,0 +1,68 @@
+@import '../Colours.scss';
+
+.blocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 100px auto 0;
+}
+
+.block {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(100, 200, 200, 0.7);
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.front {
+  transform: rotateX(0deg) translateZ(100px);
+}
+.back {
+  transform: rotateX(-180deg) translateZ(100px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+.block_roll {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: spin 2s infinite linear;
+}

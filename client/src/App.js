@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useEffect, useState /*useContext*/ } from 'react';
+// import { blockContext } from './context/BlockContext.js';
+import axios from 'axios';
+import Navbar from './components/Navbar';
+import BlockOne from './components/BlockOne';
+import BlockTwo from './components/BlockTwo';
+import BlockThree from './components/BlockThree';
 
 function App() {
+
+  const rollOne = () => {
+    let block = document.getElementById("block-one");
+
+    if (block.getAttribute("class") !== "block_roll") {
+      return block.setAttribute("class", "block_roll")
+    }
+
+    return block.setAttribute("class", "block");
+  }
+
+  const rollTwo = () => {
+    let block = document.getElementById("block-two");
+
+    if (block.getAttribute("class") !== "block_roll") {
+      return block.setAttribute("class", "block_roll")
+    }
+
+    return block.setAttribute("class", "block");
+  }
+
+  const rollThree = () => {
+    let block = document.getElementById("block-three");
+
+    if (block.getAttribute("class") !== "block_roll") {
+      return block.setAttribute("class", "block_roll")
+    }
+
+    return block.setAttribute("class", "block");
+  }
+
+  
+
   return (
     <div className="App">
+
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navbar />
       </header>
+
+      <main className="App-main">
+        <div className="dice">
+          <BlockOne onClick={rollOne}/>
+          <BlockTwo onClick={rollTwo}/>
+          <BlockThree onClick={rollThree}/>
+        </div>
+      </main>
+
     </div>
   );
 }
 
 export default App;
+
