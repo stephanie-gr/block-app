@@ -20,7 +20,6 @@ export default function RestrictionStateProvider(props) {
 
   const getRandomRestriction = function(blockId) {
     //check state of block this function was called from
-    getRestrictKeys();
     
     if (state[blockId]) {
       //then you are re-rolling and have to allow roll to use that restrict
@@ -28,10 +27,11 @@ export default function RestrictionStateProvider(props) {
         ...prev,
         [blockId]: ""
       }));
+      
+      getRestrictKeys();
 
       if (randomRestrict === state.blockOne || randomRestrict === state.blockTwo || randomRestrict === state.blockThree) {
-        console.log('caught ya');
-        getRandomRestriction(blockId);
+        getRestrictKeys();
       };
 
       axios
@@ -45,16 +45,21 @@ export default function RestrictionStateProvider(props) {
 
     };
 
+    getRestrictKeys();
+    
     //logic for first roll on a block
     if (randomRestrict === state.blockOne || randomRestrict === state.blockTwo || randomRestrict === state.blockThree) {
-      getRandomRestriction(blockId);
+      getRestrictKeys();
     };
 
-    console.log('inside first roll', randomRestrict);
-    setState((prev) => ({
-      ...prev,
-      [blockId]: randomRestrict
-    }));
+    axios
+    .get(`/api/${randomRestrict}_restrictions`)
+    .then((res) => {
+      setState((prev) => ({
+        ...prev,
+        [blockId]: res.data[0].text
+      }));
+    });
 
     return randomRestrict;
 
