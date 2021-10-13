@@ -1,15 +1,15 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/users", (request, response) => {
+  router.get("/voice_restrictions", (request, response) => {
     db.query(
       `
         SELECT *
-        FROM users 
+        FROM voice_restrictions 
         OFFSET floor(random() * (
 		      SELECT
 			    COUNT(*)
-			    FROM users))
+			    FROM voice_restrictions))
         LIMIT 1;
       `
     ).then(({ rows: users }) => {

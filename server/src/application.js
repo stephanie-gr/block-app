@@ -13,7 +13,12 @@ const db = require("./db");
 
 
 const users = require("./routes/users"); 
-
+const age_restrictions = require("./routes/age_restrictions");
+const misc_restrictions = require("./routes/misc_restrictions");
+const voice_restrictions = require("./routes/voice_restrictions");
+const length_restrictions = require("./routes/length_restrictions");
+const gender_restrictions = require("./routes/gender_restrictions");
+const genre_restrictions = require("./routes/genre_restrictions");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -39,6 +44,12 @@ module.exports = function application(
   app.use(bodyparser.json());
 
   app.use("/api", users(db));
+  app.use("/api", age_restrictions(db));
+  app.use("/api", misc_restrictions(db));
+  app.use("/api", length_restrictions(db));
+  app.use("/api", voice_restrictions(db));
+  app.use("/api", gender_restrictions(db));
+  app.use("/api", genre_restrictions(db));
 
   app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })

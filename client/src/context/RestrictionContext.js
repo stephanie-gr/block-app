@@ -14,7 +14,6 @@ export default function RestrictionStateProvider(props) {
   
   const getRestrictKeys = () => {
     const restricts = ["age", "voice", "length", "genre", "gender", "misc"];
-    // let restrictArr = Object.keys(state.restricts);
     randomRestrict = restricts[Math.floor(Math.random()*restricts.length)];
   };
 
@@ -35,17 +34,19 @@ export default function RestrictionStateProvider(props) {
         getRandomRestriction(blockId);
       };
 
-      console.log('inside re-roll', randomRestrict);
-      setState((prev) => ({
-        ...prev,
-        [blockId]: randomRestrict
-      }));
-      return randomRestrict;
+      axios
+      .get(`/api/${randomRestrict}_restrictions`)
+      .then((res) => {
+        setState((prev) => ({
+          ...prev,
+          [blockId]: res.data[0].text
+        }));
+      });
+
     };
 
     //logic for first roll on a block
     if (randomRestrict === state.blockOne || randomRestrict === state.blockTwo || randomRestrict === state.blockThree) {
-      console.log('caught ya');
       getRandomRestriction(blockId);
     };
 

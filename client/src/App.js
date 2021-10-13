@@ -20,20 +20,6 @@ function App() {
     
     getRandomRestriction("blockOne");
 
-    // axios
-    //   .get(`/api/${state.blockOne}_restrictions`)
-    //   .then((res) => {
-    //     console.log(res);
-    //   }
-    // );
-
-    axios
-      .get(`/api/users`)
-      .then((res) => {
-        console.log('bro wtf');
-        console.log(res);
-      }
-    );
 
     return block.setAttribute("class", "block");
 
@@ -48,11 +34,6 @@ function App() {
 
     getRandomRestriction("blockTwo");
 
-    axios.get(`/api/${state.blockOne}_restrictions`)
-      .then((res) => {
-        
-      });
-
     return block.setAttribute("class", "block");
   }
 
@@ -64,11 +45,6 @@ function App() {
     };
 
     getRandomRestriction("blockThree");
-
-    axios.get(`/api/${state.blockOne}_restrictions`)
-      .then((res) => {
-        
-      });
 
     return block.setAttribute("class", "block");
   }
