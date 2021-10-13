@@ -1,6 +1,8 @@
 import './App.scss';
-import { useEffect, useState /*useContext*/ } from 'react';
-// import { blockContext } from './context/BlockContext.js';
+import { useEffect, useState, useContext} from 'react';
+// import { blockContext } from './context/BlockContext';
+import { restrictionContext } from './context/RestrictionContext';
+import RestrictionStateProvider from './context/RestrictionContext';
 import axios from 'axios';
 import Navbar from './components/Navbar';
 import BlockOne from './components/BlockOne';
@@ -8,6 +10,7 @@ import BlockTwo from './components/BlockTwo';
 import BlockThree from './components/BlockThree';
 
 function App() {
+  const { state, getRandomRestriction } = useContext(restrictionContext);
 
   const rollOne = () => {
     let block = document.getElementById("block-one");
@@ -15,8 +18,11 @@ function App() {
     if (block.getAttribute("class") !== "block_roll") {
       return block.setAttribute("class", "block_roll")
     }
+    
+    getRandomRestriction();
 
     return block.setAttribute("class", "block");
+
   }
 
   const rollTwo = () => {
@@ -42,6 +48,8 @@ function App() {
   
 
   return (
+    <RestrictionStateProvider>
+
     <div className="App">
 
       <header className="App-header">
@@ -57,6 +65,8 @@ function App() {
       </main>
 
     </div>
+    </RestrictionStateProvider>
+
   );
 }
 
