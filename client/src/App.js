@@ -67,7 +67,7 @@ function App() {
           <BlockTwo onClick={rollTwo} blockTwo={state.blockTwoText}/>
           <BlockThree onClick={rollThree} blockThree={state.blockThreeText}/>
         </div>
-        <WritingArea />
+        {/* <WritingArea /> */}
       </main>
 
     </div>
