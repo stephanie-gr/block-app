@@ -1,0 +1,5 @@
+NOUNS:
+story
+restriction
+user
+

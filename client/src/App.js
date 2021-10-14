@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import BlockOne from './components/BlockOne';
 import BlockTwo from './components/BlockTwo';
 import BlockThree from './components/BlockThree';
+import WritingArea from './components/WritingArea';
 
 function App() {
   const { state, getRandomRestriction } = useContext(restrictionContext);
@@ -18,7 +19,7 @@ function App() {
       return block.setAttribute("class", "block_roll")
     }
     
-    getRandomRestriction("blockOne");
+    getRandomRestriction("blockOneText", "blockOneUsing");
 
 
     return block.setAttribute("class", "block");
@@ -32,7 +33,7 @@ function App() {
       return block.setAttribute("class", "block_roll")
     };
 
-    getRandomRestriction("blockTwo");
+    getRandomRestriction("blockTwoText", "blockTwoUsing");
 
     return block.setAttribute("class", "block");
   }
@@ -44,7 +45,7 @@ function App() {
       return block.setAttribute("class", "block_roll")
     };
 
-    getRandomRestriction("blockThree");
+    getRandomRestriction("blockThreeText", "blockThreeUsing");
 
     return block.setAttribute("class", "block");
   }
@@ -62,10 +63,11 @@ function App() {
 
       <main className="App-main">
         <div className="dice">
-          <BlockOne onClick={rollOne} blockOne={state.blockOne}/>
-          <BlockTwo onClick={rollTwo} blockTwo={state.blockTwo}/>
-          <BlockThree onClick={rollThree} blockThree={state.blockThree}/>
+          <BlockOne onClick={rollOne} blockOne={state.blockOneText}/>
+          <BlockTwo onClick={rollTwo} blockTwo={state.blockTwoText}/>
+          <BlockThree onClick={rollThree} blockThree={state.blockThreeText}/>
         </div>
+        <WritingArea />
       </main>
 
     </div>

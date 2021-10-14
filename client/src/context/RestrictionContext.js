@@ -7,9 +7,12 @@ export default function RestrictionStateProvider(props) {
   let randomRestrict = "";
 
   const [state, setState] = useState({
-      blockOne: "",
-      blockTwo: "",
-      blockThree: ""
+      blockOneText: "",
+      blockTwoText: "",
+      blockThreeText: "",
+      blockOneUsing: "",
+      blockTwoUsing: "",
+      blockThreeUsing: ""
   })
   
   const getRestrictKeys = () => {
@@ -18,37 +21,41 @@ export default function RestrictionStateProvider(props) {
   };
 
 
-  const getRandomRestriction = function(blockId) {
+  const getRandomRestriction = function(blockText, blockUsing) {
     //check state of block this function was called from
+    getRestrictKeys();
     
-    if (state[blockId]) {
+    if (state[blockText]) {
       //then you are re-rolling and have to allow roll to use that restrict
       setState((prev) => ({
         ...prev,
-        [blockId]: ""
+        [blockUsing]: ""
       }));
       
-      getRestrictKeys();
-
-      if (randomRestrict === state.blockOne || randomRestrict === state.blockTwo || randomRestrict === state.blockThree) {
+      
+      if (randomRestrict === state.blockOneUsing || randomRestrict === state.blockTwoUsing || randomRestrict === state.blockThreeUsing) {
+        console.log('hello');
         getRestrictKeys();
       };
 
       axios
       .get(`/api/${randomRestrict}_restrictions`)
       .then((res) => {
+        console.log(res.data[0].text)
+
         setState((prev) => ({
           ...prev,
-          [blockId]: res.data[0].text
+          [blockText]: res.data[0].text,
+          [blockUsing]: randomRestrict
         }));
       });
 
     };
 
     getRestrictKeys();
-    
+
     //logic for first roll on a block
-    if (randomRestrict === state.blockOne || randomRestrict === state.blockTwo || randomRestrict === state.blockThree) {
+    if (randomRestrict === state.blockOneUsing || randomRestrict === state.blockTwoUsing || randomRestrict === state.blockThreeUsing) {
       getRestrictKeys();
     };
 
@@ -57,7 +64,8 @@ export default function RestrictionStateProvider(props) {
     .then((res) => {
       setState((prev) => ({
         ...prev,
-        [blockId]: res.data[0].text
+        [blockText]: res.data[0].text,
+        [blockUsing]: randomRestrict
       }));
     });
 

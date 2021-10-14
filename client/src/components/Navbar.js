@@ -2,6 +2,6 @@ import './Navbar.scss';
 
 export default function Navbar () {
   return(
-    <div className="Navbar">NAVBAR</div>
+    <div className="Navbar">BLOCK</div>
   )
 }

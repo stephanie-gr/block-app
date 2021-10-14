@@ -1,6 +1,15 @@
 @import '../Colours.scss';
 
 .Navbar {
-  background-color: $accent-colour;
+  background-color: #d7e6f2;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
   height: 10vh;
+  font-family: 'Heebo', sans-serif;
+  font-size: 6vh;
+  color: rgb(60, 93, 93);
+  align-items: center;
+  padding-top: 9px;
+  padding-bottom: 3px;
+  padding-left: 15px;
+  border-bottom: 1px solid rgba(60, 93, 93, 0.1);
 }

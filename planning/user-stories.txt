@@ -1,0 +1,15 @@
+As a user I can get three random writing restrictions for a fiction project.
+
+As a user I can opt to take a screenshot or copy/paste the three restrictions to save for later.
+
+As a user I can 're-shake the dice' to get three new restrictions if I don't like my initial three.
+
+As a user I can re-shake one die to get one new restriction if I don't like just one restriction.
+
+As a program I will validate my users log-in information before sharing their private stories because my user's privacy is important. 
+
+As a program I will ensure that no two restrictions will negate the other because that would be a confusing and frustrating experience for my users. 
+
+OPTIONAL/STRETCH: As a user I can save my story as public or private to share with others or just to look back on my progress as a writer.
+
+STRETCH: As a user I can add restrictions to the database because I want to participate in the writing community.
